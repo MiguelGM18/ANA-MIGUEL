@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>.</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+  }
+
+  input[type="date"] {
+    background: #000;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 10px 14px;
+    font-size: 18px;
+    border-radius: 6px;
+    outline: none;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+  }
+
+  #mensaje {
+    margin-top: 40px;
+    color: #fff;
+    font-size: 22px;
+    text-align: center;
+    max-width: 80%;
+    letter-spacing: 1px;
+    min-height: 40px;
+  }
+</style>
+</head>
+<body>
+
+<input type="date" id="fecha" min="1995-01-01" max="2030-12-31">
+<div id="mensaje"></div>
+
+<script>
+  const input = document.getElementById('fecha');
+  const mensaje = document.getElementById('mensaje');
+
+  input.addEventListener('change', function () {
+    if (!this.value) return;
+
+    const [anio, mes, dia] = this.value.split('-').map(Number);
+    let resultado = "PRUEBA CON OTRA";
+
+    if (dia === 3 && mes === 9 && anio === 2013) {
+      resultado = "ENCONTRASTE EL DÍA QUE NUESTRA HISTORIA COMENZÓ";
+    } else if (dia === 22 && mes === 1 && anio === 2026) {
+      resultado = "SI, CAMBIÓ CASI TODO <3";
+    } else if (dia === 10 && mes === 5 && anio === 2026) {
+      resultado = "FORMALIZAMOS UN AMOR DE 13 AÑOS ;)";
+    } else if (dia === 22 && mes === 10) {
+      resultado = "El cumpleaños de la mujer más hermosa.";
+    } else if ((dia === 24 && mes === 12) || (dia === 31 && mes === 12)) {
+      resultado = "Días festivos.";
+    } else if (dia === 5 && mes === 6) {
+      resultado = "NADA TAN ESPECIAL";
+    } else if (dia === 2 && mes === 9) {
+      resultado = "EL DÍA QUE LO CAMBIÓ TODO ¿¿¿??? EN LA CENA TE LO DIGO";
+    } else if (dia === 3 && mes === 9) {
+      resultado = "PRUEBA CON OTRA ¿?";
+    }
+
+    mensaje.textContent = resultado;
+  });
+</script>
+
+</body>
+</html>
